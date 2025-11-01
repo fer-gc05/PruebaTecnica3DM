@@ -12,7 +12,7 @@
 				{
 					"name": "Realizar Carga Inicial (100 llamadas)",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"url": {
 							"raw": "{{base_url}}/api/perform-init-load",
@@ -24,14 +24,14 @@
 								"perform-init-load"
 							]
 						},
-						"description": "Consume el API hasta obtener 100 respuestas y las guarda en la base de datos."
+						"description": "Consume el API hasta obtener 100 respuestas y las guarda en la base de datos. Devuelve HTTP 200 con JSON."
 					},
 					"response": []
 				},
 				{
 					"name": "Realizar Barrido de Mejora",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"url": {
 							"raw": "{{base_url}}/api/perform-sweep",
@@ -43,7 +43,7 @@
 								"perform-sweep"
 							]
 						},
-						"description": "Identifica registros con categoría 'bad' y los reintenta hasta obtener 'medium' o 'good'."
+						"description": "Identifica registros con categoría 'bad' y los reintenta hasta obtener 'medium' o 'good'. Devuelve HTTP 200 con JSON."
 					},
 					"response": []
 				},
@@ -62,7 +62,7 @@
 								"generate-report"
 							]
 						},
-						"description": "Genera un reporte completo con métricas, distribución de categorías, estadísticas de intentos y resumen de ejecuciones."
+						"description": "Genera un reporte completo con métricas, distribución de categorías, estadísticas de intentos y resumen de ejecuciones. Devuelve HTTP 200 con JSON."
 					},
 					"response": []
 				}
@@ -146,7 +146,7 @@
 								"results"
 							]
 						},
-						"description": "Crea un nuevo resultado. Todos los campos son requeridos."
+						"description": "Crea un nuevo resultado. Todos los campos son requeridos. Devuelve HTTP 201 (Created) con JSON."
 					},
 					"response": []
 				},
@@ -213,7 +213,7 @@
 								}
 							]
 						},
-						"description": "Elimina un resultado de la base de datos."
+						"description": "Elimina un resultado de la base de datos. Devuelve HTTP 204 (No Content)."
 					},
 					"response": []
 				}
