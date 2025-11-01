@@ -59,13 +59,13 @@ class ResultServices
     }
 
     // Obtiene métricas detalladas para reportes
-    public function getDetailedMetrics(): array
+    public function getDetailedMetrics()
     {
         return $this->resultRepository->getDetailedMetrics();
     }
 
     // Obtiene el promedio de intentos para convertir bad
-    public function getAverageAttemptsForBadConversion(): ?float
+    public function getAverageAttemptsForBadConversion()
     {
         return $this->resultRepository->getAverageAttemptsForBadConversion();
     }

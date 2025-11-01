@@ -10,7 +10,7 @@ class ReportService
     {
     }
 
-    public function generateFinalReport(): array
+    public function generateFinalReport()
     {
         $detailedMetrics = $this->resultServices->getDetailedMetrics();
         $categoryDistribution = $this->resultServices->getCategoryDistribution();
@@ -52,14 +52,14 @@ class ReportService
         ];
     }
 
-    private function getInitialLoadCalls(): int
+    private function getInitialLoadCalls()
     {
         return DB::table('results')
             ->where('attempts', 1)
             ->count();
     }
 
-    private function getImprovementCalls(): int
+    private function getImprovementCalls()
     {
         return DB::table('results')
             ->where('attempts', '>', 1)
@@ -67,7 +67,7 @@ class ReportService
             ->value('total_improvement_calls') ?? 0;
     }
 
-    private function getSweepsStatistics(): array
+    private function getSweepsStatistics()
     {
         $resultsImproved = DB::table('results')
             ->where('attempts', '>', 1)

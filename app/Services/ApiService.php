@@ -15,7 +15,7 @@ class ApiService implements ApiClientRepository
     }
 
     // Obtiene los resultados desde la API de forma masiva
-    public function getResultsMassive(?int $count = null, int $concurrency = 20): ?array
+    public function getResultsMassive(?int $count = null, int $concurrency = 20)
     {
         $baseUrl = config('services.testapi.base_url');
         $userId = config('services.testapi.user_id');
@@ -62,7 +62,7 @@ class ApiService implements ApiClientRepository
     }
 
     // Obtiene un resultado individual
-    public function getResultIndividual(): ?array
+    public function getResultIndividual()
     {
         $baseUrl = config('services.testapi.base_url');
         $userId = config('services.testapi.user_id');
