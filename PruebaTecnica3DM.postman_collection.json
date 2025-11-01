@@ -1,0 +1,232 @@
+{
+	"info": {
+		"_postman_id": "prueba-tecnica-3dm",
+		"name": "Prueba Técnica 3DM - API",
+		"description": "Colección de endpoints para la prueba técnica: CRUD + Consumo de API + Reportes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Carga Inicial y Mejora",
+			"item": [
+				{
+					"name": "Realizar Carga Inicial (100 llamadas)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/perform-init-load",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"perform-init-load"
+							]
+						},
+						"description": "Consume el API hasta obtener 100 respuestas y las guarda en la base de datos."
+					},
+					"response": []
+				},
+				{
+					"name": "Realizar Barrido de Mejora",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/perform-sweep",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"perform-sweep"
+							]
+						},
+						"description": "Identifica registros con categoría 'bad' y los reintenta hasta obtener 'medium' o 'good'."
+					},
+					"response": []
+				},
+				{
+					"name": "Generar Reporte Final",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/generate-report",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"generate-report"
+							]
+						},
+						"description": "Genera un reporte completo con métricas, distribución de categorías, estadísticas de intentos y resumen de ejecuciones."
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints para la carga inicial de datos, barridos de mejora y generación de reportes"
+		},
+		{
+			"name": "CRUD - Resultados",
+			"item": [
+				{
+					"name": "Listar Todos los Resultados",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/results",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"results"
+							]
+						},
+						"description": "Obtiene todos los resultados almacenados en la base de datos."
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Resultado por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/results/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"results",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "ID del resultado"
+								}
+							]
+						},
+						"description": "Obtiene un resultado específico por su ID."
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Nuevo Resultado",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": \"P01LAH\",\n    \"value\": 75,\n    \"category\": \"medium\",\n    \"timestamp\": \"2025-01-01 12:00:00\",\n    \"ip_address\": \"192.168.1.1\",\n    \"attempts\": 1\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/results",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"results"
+							]
+						},
+						"description": "Crea un nuevo resultado. Todos los campos son requeridos."
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Resultado",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"value\": 85,\n    \"category\": \"good\",\n    \"attempts\": 2\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/results/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"results",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "ID del resultado a actualizar"
+								}
+							]
+						},
+						"description": "Actualiza un resultado existente. Solo se envían los campos que se desean actualizar."
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Resultado",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/results/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"results",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "ID del resultado a eliminar"
+								}
+							]
+						},
+						"description": "Elimina un resultado de la base de datos."
+					},
+					"response": []
+				}
+			],
+			"description": "Operaciones CRUD completas para gestionar resultados"
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		}
+	]
+}
+
