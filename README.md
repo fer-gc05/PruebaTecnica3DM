@@ -599,13 +599,3 @@ El endpoint `/api/generate-report` genera un reporte completo con:
 ID de Usuario API: P01LAH
 
 ---
-
-## 📄 Licencia
-
-Este proyecto es una prueba técnica y está disponible bajo la licencia MIT.
-
----
-
-## 📞 Soporte
-
-Para más información sobre la implementación, revisa los comentarios en el código o la documentación técnica incluida en el proyecto.
