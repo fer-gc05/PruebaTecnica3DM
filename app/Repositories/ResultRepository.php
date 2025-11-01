@@ -83,7 +83,7 @@ class ResultRepository implements ResultRepositoryContract
         });
     }
 
-    public function getDetailedMetrics(): array
+    public function getDetailedMetrics()
     {
         $results = $this->model->selectRaw('
             COUNT(*) as total_results,
@@ -108,7 +108,7 @@ class ResultRepository implements ResultRepositoryContract
         ];
     }
 
-    public function getAverageAttemptsForBadConversion(): float|null
+    public function getAverageAttemptsForBadConversion()
     {
         $result = $this->model
             ->where('category', '!=', 'bad')
@@ -119,7 +119,7 @@ class ResultRepository implements ResultRepositoryContract
         return $result && $result->avg_attempts ? round((float) $result->avg_attempts, 2) : null;
     }
 
-    public function getCategoryDistribution(): array
+    public function getCategoryDistribution()
     {
         $total = $this->model->count();
 
