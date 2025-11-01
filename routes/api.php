@@ -16,7 +16,7 @@ Route::post('/perform-init-load', [ApiController::class, 'performInitLoad']);
 Route::post('/perform-sweep', [ApiController::class, 'performSweep']);
 
 // Ruta para generar el reporte final con métricas.
-Route::post('/generate-report', [ApiController::class, 'generateReport']);
+Route::get('/generate-report', [ApiController::class, 'generateReport']);
 
 // Ruta para gestionar los resultados.(CRUD)
 Route::apiResource('results', ResultController::class);
